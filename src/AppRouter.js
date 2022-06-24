@@ -3,13 +3,15 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProtectedPage from './Pages/ProtectedPage';
 import Home from './Pages/Home';
+import ArticleDetail from './Pages/ArticleDetail';
 
-function App() {
+function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<ProtectedPage />}>
           <Route index element={<Home />} />
+          <Route path="article/:itemID" element={<ArticleDetail />} />
 
         </Route>
       </Routes>
@@ -17,4 +19,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppRouter;
