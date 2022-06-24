@@ -6,22 +6,23 @@ export default function Searchbar(props) {
     const [allItems, setAllItems] = useState([])
     const [search, setSearch] = useState("")
     const [filterItems, setFilterItems] = useState([])
-    const [error, setError] = useState("")
+    const [error, setError] = useState()
 
     useEffect(() => {
-        const loaded = true
         console.log("Searchbar all Items were rendered");
 
         fetch('http://localhost:8080/api/articles')
             .then(resp => resp.json())
             .then(data => {
-                if (loaded && !data.err) {
+                if (!data.err) {
                     console.log(data);
                     setAllItems(data)
-                } else if (loaded && data.err) {
+                } else if (data.err) {
                     setError(data.err.message)
                     return
-                } setError("Fetch not working")
+                } return () => {
+                    setError("Fetch not working")
+                }
             })
     }, [])
 
@@ -63,8 +64,9 @@ export default function Searchbar(props) {
                 <div onClick={emptySearch}>X</div>
                 <button>Submit</button>
             </form>
-
-            <ItemList filterItems={filterItems} />
+            {error
+                ? null
+                : <ItemList filterItems={filterItems} />}
         </>
     )
 }
