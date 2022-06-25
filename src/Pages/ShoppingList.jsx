@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import "./shoppingList.css"
 export default function ShoppingList() {
     const [loaded, setLoaded] = useState(false)
     const [shoppingList, setShoppingList] = useState([])
@@ -59,12 +60,14 @@ export default function ShoppingList() {
     const navigate = useNavigate()
 
     const navigateBack = () => {
-        navigate(-1)
+        navigate("/")
     }
 
     return (
         <>
-            <h1>Your ShoppingList:</h1>
+            <section className="header">
+                <button className="back-btn btn" onClick={navigateBack}><AiOutlineArrowLeft /></button>
+                <h1>Your ShoppingList:</h1></section>
 
             <div>
                 {loaded ? (
@@ -75,16 +78,16 @@ export default function ShoppingList() {
                         : <ul>
                             {shoppingList.shoppingListItems.map((item, key) =>
                                 <li key={key}>
-                                    <div>
-                                        <div>
-                                            <h1>{item.product.productName}</h1>
-                                            <p>{item.product.brand}</p>
-                                            <p>{item.product.pack}</p>
-                                            <p>{item.product.categoryName}</p>
+                                    <div className="shopping-list-item" >
+                                        <div className="flex-container">
+                                            <p className="amount">{item.amount}</p>
+                                            <h4>{item.product.productName}</h4>
                                         </div>
                                         <div>
-                                            <p>{item.product.price}€</p>
-                                            <p>{item.amount}</p>
+                                            <p className="price">{item.product.price}€</p>
+                                            <p>{item.product.brand}</p>
+                                            <p>{item.product.pack}</p>
+                                            <p className="category">{item.product.categoryName}</p>
                                         </div>
                                         <div>
                                             <button onClick={e => increaseAmountItem(e, item.product.id)}>
@@ -103,8 +106,6 @@ export default function ShoppingList() {
                         <h3>Your Shopping List is currently empty</h3>
                     </div>
                 }
-
-                <button onClick={navigateBack}>Go Back</button>
 
             </div>
         </>

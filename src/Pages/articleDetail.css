@@ -37,10 +37,6 @@ main {
     text-transform: capitalize;
 }
 
-article:hover {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.189);
-}
-
 .flex-container {
     display: flex;
     gap: 10px;
@@ -56,6 +52,11 @@ article:hover {
     padding: 10px;
     font-weight: bolder;
     margin: 3% 0;
+}
+
+.blue-btn:hover {
+    background-color: #062880;
+    color: #fff;
 }
 
 .price {
