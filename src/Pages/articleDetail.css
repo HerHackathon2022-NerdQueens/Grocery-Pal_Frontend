@@ -1,0 +1,70 @@
+main {
+    width: 80%;
+    margin: 8% auto;
+}
+
+.header {
+    margin: 2%;
+}
+
+.header h1 {
+    font-size: 1.3rem;
+    margin-bottom: 2%;
+}
+
+.product-photo {
+    height: 30vh;
+    width: 100%;
+    margin: 0 auto;
+    background: url(./Card.png) no-repeat center/contain;
+}
+
+.product-destails {
+    margin: 2%;
+}
+
+.product-destails h3 {
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.product-info {
+    margin: 2%;
+}
+
+.product-info p {
+    font-size: .8rem;
+    text-transform: capitalize;
+}
+
+article:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.189);
+}
+
+.flex-container {
+    display: flex;
+    gap: 10px;
+}
+
+.blue-btn {
+    outline: none;
+    border: 1px solid #062880;
+    border-radius: 5px;
+    color: #062880;
+    background-color: transparent;
+    width: 100%;
+    padding: 10px;
+    font-weight: bolder;
+    margin: 3% 0;
+}
+
+.price {
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.map {
+    border: 1px solid;
+    width: 90%;
+    margin: 5% auto;
+}
