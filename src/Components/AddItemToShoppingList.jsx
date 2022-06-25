@@ -20,7 +20,7 @@ export default function AddItemToShoppingList(props) {
 
     return (
         <>
-            <button onClick={e => addItem(e, props.id)}>+</button>
+            <button className="blue-btn" onClick={e => addItem(e, props.id)}>Save to my List </button>
         </>
     )
 

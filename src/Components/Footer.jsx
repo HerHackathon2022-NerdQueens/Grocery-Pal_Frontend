@@ -4,6 +4,7 @@ import { BsListUl } from "react-icons/bs";
 import { GiCookingPot } from "react-icons/gi";
 import { AiOutlineUser } from "react-icons/ai"
 import { BsFillJournalBookmarkFill } from "react-icons/bs";
+import { NavLink, Link } from "react-router-dom";
 
 export default function Footer() {
     return (
@@ -11,7 +12,9 @@ export default function Footer() {
             <ul>
                 <li>
                     {/* Random Recipes */}
-                    <BsShopWindow />
+                    <NavLink to="/" activeclassname="active">
+                        <BsShopWindow />
+                    </NavLink>
                 </li>
                 <li>
                     {/* User Shopping List */}
@@ -25,3 +28,4 @@ export default function Footer() {
         </nav>
     )
 }
+
