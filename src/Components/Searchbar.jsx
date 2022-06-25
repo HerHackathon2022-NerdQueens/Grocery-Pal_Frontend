@@ -12,7 +12,7 @@ export default function Searchbar(props) {
     useEffect(() => {
         console.log("Searchbar all Items were rendered");
 
-        fetch('http://localhost:8080/api/articles')
+        fetch('http://localhost:8081/Product')
             .then(resp => resp.json())
             .then(data => {
                 if (!data.err) {
@@ -32,7 +32,7 @@ export default function Searchbar(props) {
         setSearch(searchedWord)
 
         const nFilter = allItems.filter((value) => {
-            return value.name.toLowerCase().includes(searchedWord.toLowerCase())
+            return value.productName.toLowerCase().includes(searchedWord.toLowerCase())
         })
 
         if (searchedWord === "") {

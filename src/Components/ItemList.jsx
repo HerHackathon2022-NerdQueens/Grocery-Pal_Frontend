@@ -10,7 +10,7 @@ export default function ItemList(props) {
             {props.filterItems.map((item, key) =>
                 <div key={key}>
                     <Link to={"article/" + item.id}>
-                        <h2>{item.name}</h2>
+                        <h2>{item.productName}</h2>
                     </Link>
                     <p>{item.brand}</p>
                     <p>{item.pack}</p>

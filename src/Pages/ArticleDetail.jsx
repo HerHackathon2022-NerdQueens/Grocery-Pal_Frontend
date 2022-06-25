@@ -12,7 +12,7 @@ export default function ArticleDetail(props) {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/articles/" + itemID)
+        fetch("http://localhost:8081/Product/" + itemID)
             .then(resp => resp.json())
             .then(getSingleItem => {
                 if (!getSingleItem.err) {
@@ -45,7 +45,7 @@ export default function ArticleDetail(props) {
                 </div> :
                     <>
                         <article>
-                            <h2>{item.name}</h2>
+                            <h2>{item.productName}</h2>
                             <p>{item.brand}</p>
                             <p>{item.pack}</p>
                             <p>{item.price}€</p>
