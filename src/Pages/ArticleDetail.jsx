@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import AddItemToShoppingList from "../Components/AddItemToShoppingList"
 
 export default function ArticleDetail(props) {
     const { itemID } = useParams()
@@ -27,6 +28,9 @@ export default function ArticleDetail(props) {
             })
     }, [])
 
+    if (error) {
+        console.log(error);
+    }
 
     const navigateBack = () => {
         navigate(-1)
@@ -36,14 +40,16 @@ export default function ArticleDetail(props) {
     return (
         <>
             {loaded ?
-                (
+                (error ? <div>
+                    <h3>Sorry, we could not find that article :/</h3>
+                </div> :
                     <>
                         <article>
                             <h2>{item.name}</h2>
                             <p>{item.brand}</p>
                             <p>{item.pack}</p>
                             <p>{item.price}€</p>
-                            <div>Add to Shopping List</div>
+                            <AddItemToShoppingList id={item.id} />
                         </article>
                         <div>
                             <img src=""
