@@ -15,7 +15,7 @@ export default function Searchbar(props) {
         fetch('http://localhost:8081/Product')
             .then(resp => resp.json())
             .then(data => {
-                if (!data.err) {
+                if (!data.err && data) {
                     console.log(data);
                     setAllItems(data)
                 } else if (data.err) {
