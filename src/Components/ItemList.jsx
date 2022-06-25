@@ -4,7 +4,9 @@ import AddItemToShoppingList from "./AddItemToShoppingList";
 export default function ItemList(props) {
     console.log("ItemList", props.filterItems);
     return (
-        <div>
+
+        <div className="product-container">
+
             {props.filterItems.map((item, key) =>
                 <div key={key}>
                     <Link to={"article/" + item.id}>
