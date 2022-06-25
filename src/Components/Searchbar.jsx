@@ -1,3 +1,4 @@
+import './searchbar.css'
 import { useEffect, useState } from "react"
 import ItemList from "./ItemList"
 
@@ -60,9 +61,10 @@ export default function Searchbar(props) {
                     type="text"
                     value={search}
                     onChange={handleChange}
+                    placeholder="search products"
                 />
-                <div onClick={emptySearch}>X</div>
-                <button>Submit</button>
+                {/* <div onClick={emptySearch}>X</div> */}
+                {/* <button>Submit</button> */}
             </form>
             {error
                 ? null
