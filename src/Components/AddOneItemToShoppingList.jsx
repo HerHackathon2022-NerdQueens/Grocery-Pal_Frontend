@@ -13,13 +13,14 @@ export default function AddOneItemToShoppingList(props) {
                 'Content-Type': 'application/json',
             }
         })
-        // .then(resp => resp.json())
-        // .then(json => console.log("addeditem"))
     }
 
     return (
         <>
-            <button className="blue-btn" onClick={e => addItem(e, props.id)}>Save to my List </button>
+            {props.saveTextClass ?
+                <button className="blue-btn" onClick={e => addItem(e, props.id)}>Save to my List </button>
+                : <button className="blue-btn" onClick={e => addItem(e, props.id)}>+</button>
+            }
         </>
     )
 

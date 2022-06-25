@@ -37,6 +37,7 @@ export default function ArticleDetail(props) {
         navigate(-1)
     }
 
+    const saveTextClass = true
 
     return (
         <main>
@@ -56,7 +57,7 @@ export default function ArticleDetail(props) {
                                 <p className="link"><a href="#">show location in store</a></p>
                             </div>
                             <p className="price">{item.price}€</p>
-                            <AddOneItemToShoppingList id={item.id} />
+                            <AddOneItemToShoppingList id={item.id} saveTextClass={saveTextClass} />
 
                         </article>
                         <section className="product-info">
