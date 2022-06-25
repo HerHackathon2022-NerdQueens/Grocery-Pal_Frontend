@@ -1,6 +1,5 @@
-import { useEffect } from "react"
 
-export default function AddItemToShoppingList(props) {
+export default function AddOneItemToShoppingList(props) {
     // const itemID = props.id
 
     const addItem = (event, itemID) => {

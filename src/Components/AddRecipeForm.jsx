@@ -6,6 +6,7 @@ export default function AddRecipeForm() {
     const [recipeName, setRecipeName] = useState("")
     const [description, setDescription] = useState("")
     const [ingredients, setIngredients] = useState([]) //[{"productId": 0,"amount": 0}]
+    const [singleIngredient, setSingleIngredient] = useState({})
 
     const [error, setError] = useState("")
     const [inputError, setInputError] = useState("")
@@ -74,6 +75,7 @@ export default function AddRecipeForm() {
 
     }
 
+    console.log("ingredientsArray", ingredients);
 
     return (
         <>
@@ -96,7 +98,7 @@ export default function AddRecipeForm() {
 
                 <input type="submit" value="Create New Recipe" onSubmit={e => addRecipe(e)} />
                 <h1>Add Ingredients:</h1>
-                <Searchbar />
+                <Searchbar setSingleIngredient={setSingleIngredient} singleIngredient={singleIngredient} />
             </form>
 
 

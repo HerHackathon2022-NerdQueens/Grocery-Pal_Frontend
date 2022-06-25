@@ -68,7 +68,7 @@ export default function Searchbar(props) {
             </form>
             {error
                 ? null
-                : <ItemList filterItems={filterItems} />}
+                : <ItemList filterItems={filterItems} setSingleIngredient={props.setSingleIngredient} singleIngredient={props.singleIngredient} />}
         </>
     )
 }

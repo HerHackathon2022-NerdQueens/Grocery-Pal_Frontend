@@ -16,12 +16,18 @@ export default function Footer() {
                         <BsShopWindow />
                     </NavLink>
                 </li>
-                <li>
-                    {/* User Shopping List */}
-                    <BsListUl />
-                </li>
-                <li><GiCookingPot />
-                </li>
+                <Link to={"shoppinglist"}>
+                    <li>
+                        {/* User Shopping List */}
+                        <BsListUl />
+                    </li>
+                </Link>
+                <Link to={"recipes"}>
+                    <li>
+                        <GiCookingPot />
+                    </li>
+                </Link>
+
                 <li><AiOutlineUser />
                 </li>
             </ul>

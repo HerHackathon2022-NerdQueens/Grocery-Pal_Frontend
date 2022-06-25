@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import AddItemToShoppingList from "../Components/AddItemToShoppingList"
+import AddOneItemToShoppingList from "../Components/AddOneItemToShoppingList"
 import "./articleDetail.css"
 import { AiOutlineArrowLeft } from "react-icons/ai";
-
 
 export default function ArticleDetail(props) {
     const { itemID } = useParams()
@@ -46,6 +45,7 @@ export default function ArticleDetail(props) {
                     <h3 className="error">Sorry, we could not find that article :/</h3>
                 </div> :
                     <>
+
                         <section className="header">
                             <button className="back-btn btn" onClick={navigateBack}><AiOutlineArrowLeft /></button>
                             <h1>Product details</h1></section>
@@ -56,7 +56,8 @@ export default function ArticleDetail(props) {
                                 <p className="link"><a href="#">show location in store</a></p>
                             </div>
                             <p className="price">{item.price}€</p>
-                            <AddItemToShoppingList id={item.id} />
+                            <AddOneItemToShoppingList id={item.id} />
+
                         </article>
                         <section className="product-info">
                             <p>Brand: {item.brand}</p>
@@ -69,8 +70,9 @@ export default function ArticleDetail(props) {
                         </div>
                     </>
                 )
-                : <h1>Loading...</h1>}
+                : <h1>Loading...</h1>
+            }
 
-        </main>
+        </main >
     )
 }
