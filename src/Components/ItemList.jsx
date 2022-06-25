@@ -15,10 +15,13 @@ export default function ItemList(props) {
                     </Link>
                     <p>{item.brand}</p>
                     <p>{item.pack}</p>
+
                     <div className="flex">
                         <p>{item.price}€</p>
-                        <AddItemToShoppingList id={item.id} /></div>
+                        <AddItemToShoppingList id={item.id} />
+                    </div>
                 </article>
+
             )}
         </section>
     )

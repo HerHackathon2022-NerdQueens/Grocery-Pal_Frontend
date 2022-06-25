@@ -18,8 +18,7 @@ export default function ArticleDetail(props) {
         fetch("http://localhost:8081/Product/" + itemID)
             .then(resp => resp.json())
             .then(getSingleItem => {
-                if (!getSingleItem.err) {
-                    console.log(getSingleItem);
+                if (!getSingleItem.err && getSingleItem) {
                     setLoaded(true)
                     setItem(getSingleItem)
                 } else if (getSingleItem.err) {
