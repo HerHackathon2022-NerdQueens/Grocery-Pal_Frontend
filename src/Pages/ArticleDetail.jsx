@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import AddOneItemToShoppingList from "../Components/AddOneItemToShoppingList"
+import "./articleDetail.css"
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 export default function ArticleDetail(props) {
     const { itemID } = useParams()
@@ -37,29 +39,40 @@ export default function ArticleDetail(props) {
 
 
     return (
-        <>
+        <main>
             {loaded ?
-                (error ? <div>
-                    <h3>Sorry, we could not find that article :/</h3>
+                (error ? <div className="error">
+                    <h3 className="error">Sorry, we could not find that article :/</h3>
                 </div> :
                     <>
-                        <article>
-                            <h2>{item.productName}</h2>
-                            <p>{item.brand}</p>
-                            <p>{item.pack}</p>
-                            <p>{item.price}€</p>
+
+                        <section className="header">
+                            <button className="back-btn btn" onClick={navigateBack}><AiOutlineArrowLeft /></button>
+                            <h1>Product details</h1></section>
+                        <section className="product-photo"></section>
+                        <article className="product-destails">
+                            <div className="flex">
+                                <h3>{item.productName}</h3>
+                                <p className="link"><a href="#">show location in store</a></p>
+                            </div>
+                            <p className="price">{item.price}€</p>
                             <AddOneItemToShoppingList id={item.id} />
+
                         </article>
-                        <div>
-                            <img src=""
+                        <section className="product-info">
+                            <p>Brand: {item.brand}</p>
+                            <p>Pack: {item.pack}</p>
+                        </section>
+
+                        <div className="map">
+                            <img src="../img/map.jpg"
                                 alt="Map where item is located" />
                         </div>
                     </>
                 )
-                : <h1>Loading...</h1>}
+                : <h1>Loading...</h1>
+            }
 
-            <button onClick={navigateBack}>Back</button>
-
-        </>
+        </main >
     )
 }

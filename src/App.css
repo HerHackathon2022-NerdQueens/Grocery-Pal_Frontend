@@ -3,3 +3,35 @@
 * {
   font-family: 'Poppins', sans-serif;
 }
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+.link {
+  color: #062880;
+  font-size: .7rem;
+  text-decoration: underline;
+}
+
+/* buttons */
+.btn {
+  outline: none;
+  border: none;
+}
+
+.plus-btn {
+  padding: 5px 20px;
+  border-radius: 3px;
+  background-color: #F1F1F1;
+}
+
+.back-btn {
+  font-size: 1.2rem;
+  fill: transparent;
+}
+
+.error {
+  color: red
+}
