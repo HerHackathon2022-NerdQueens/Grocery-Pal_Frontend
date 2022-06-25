@@ -15,7 +15,7 @@ export default function ItemList(props) {
                     <p>{item.brand}</p>
                     <p>{item.pack}</p>
                     <p>{item.price}€</p>
-                    <AddItemToShoppingList id={item.id} />
+                    {<AddItemToShoppingList id={item.id} />}
                 </div>
             )}
         </div>
