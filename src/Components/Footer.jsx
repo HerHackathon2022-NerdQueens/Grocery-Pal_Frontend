@@ -4,6 +4,7 @@ import { BsListUl } from "react-icons/bs";
 import { GiCookingPot } from "react-icons/gi";
 import { AiOutlineUser } from "react-icons/ai"
 import { BsFillJournalBookmarkFill } from "react-icons/bs";
+import { Link } from "react-router-dom"
 
 export default function Footer() {
     return (
@@ -13,12 +14,18 @@ export default function Footer() {
                     {/* Random Recipes */}
                     <BsShopWindow />
                 </li>
-                <li>
-                    {/* User Shopping List */}
-                    <BsListUl />
-                </li>
-                <li><GiCookingPot />
-                </li>
+                <Link to={"shoppinglist"}>
+                    <li>
+                        {/* User Shopping List */}
+                        <BsListUl />
+                    </li>
+                </Link>
+                <Link to={"recipes"}>
+                    <li>
+                        <GiCookingPot />
+                    </li>
+                </Link>
+
                 <li><AiOutlineUser />
                 </li>
             </ul>

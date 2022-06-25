@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import AddItemToShoppingList from "../Components/AddItemToShoppingList"
+import AddOneItemToShoppingList from "../Components/AddOneItemToShoppingList"
 
 export default function ArticleDetail(props) {
     const { itemID } = useParams()
@@ -48,7 +48,7 @@ export default function ArticleDetail(props) {
                             <p>{item.brand}</p>
                             <p>{item.pack}</p>
                             <p>{item.price}€</p>
-                            <AddItemToShoppingList id={item.id} />
+                            <AddOneItemToShoppingList id={item.id} />
                         </article>
                         <div>
                             <img src=""

@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom"
-import AddItemToShoppingList from "../Components/AddItemToShoppingList";
+import AddOneItemToShoppingList from "../Components/AddOneItemToShoppingList";
 import ItemList from "../Components/ItemList";
 
 export default function RecipeDetails() {
     const { recipeID } = useParams();
-    console.log(recipeID);
 
     const [singleRecipe, setSingleRecipe] = useState()
 
@@ -23,7 +22,6 @@ export default function RecipeDetails() {
                     return
                 } else if (!recipe.err && recipe) {
                     setLoaded(true)
-                    console.log(recipe);
                     setSingleRecipe(recipe)
                 } return () => {
                     setError("Could not fetch Recipe Detail ID")
@@ -34,10 +32,9 @@ export default function RecipeDetails() {
 
     const addAllIngredients = (e, allIngredientsArray) => {
         e.preventDefault()
-        console.log(allIngredientsArray);
 
         allIngredientsArray.map(ingred => {
-            for (let i = 0; i < (ingred.amount + 1); i++) {
+            for (let i = 0; i < (ingred.amount); i++) {
                 fetch("http://localhost:8081/ShoppingList/" + ingred.product.id, {
                     method: "POST",
                     headers: {
@@ -64,7 +61,7 @@ export default function RecipeDetails() {
                             <div>
                                 <p>{singleRecipe.instructions}</p>
                             </div>
-                            <ItemList filterItems={singleRecipe.ingredients.product} />
+                            <ItemList filterItems={singleRecipe.ingredients} />
 
                             <button onClick={e => addAllIngredients(e, singleRecipe.ingredients)}>Add all ingredients to ShoppingList</button>
                         </article>

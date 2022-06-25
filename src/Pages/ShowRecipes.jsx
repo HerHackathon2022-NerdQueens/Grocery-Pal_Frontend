@@ -18,7 +18,6 @@ export default function ShowRecipes() {
                     return
                 } else if (!recipes.err && recipes) {
                     setLoaded(true)
-                    console.log(recipes);
                     setAllRecipes(recipes)
                 } return () => {
                     setError("Could not fetch Recipes")

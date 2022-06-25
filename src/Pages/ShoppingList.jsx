@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function ShoppingList() {
     const [loaded, setLoaded] = useState(false)
@@ -52,10 +53,14 @@ export default function ShoppingList() {
         amountChange ? setAmountChange(false) : setAmountChange(true)
     }
 
-    console.log("shoppingList", shoppingList);
-    console.log("amountchange", amountChange);
+    // console.log("shoppingList", shoppingList);
+    // console.log("amountchange", amountChange);
 
+    const navigate = useNavigate()
 
+    const navigateBack = () => {
+        navigate(-1)
+    }
 
     return (
         <>
@@ -98,6 +103,8 @@ export default function ShoppingList() {
                         <h3>Your Shopping List is currently empty</h3>
                     </div>
                 }
+
+                <button onClick={navigateBack}>Go Back</button>
 
             </div>
         </>
