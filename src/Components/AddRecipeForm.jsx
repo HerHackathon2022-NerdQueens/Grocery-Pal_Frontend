@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import Searchbar from "./Searchbar";
 
 export default function AddRecipeForm() {
     const [recipeName, setRecipeName] = useState("")
     const [description, setDescription] = useState("")
     const [ingredients, setIngredients] = useState([]) //[{"productId": 0,"amount": 0}]
-    const [singleIngredient, setSingleIngredient] = useState({})
+    const addRecipeActive = true
 
     const [error, setError] = useState("")
     const [inputError, setInputError] = useState("")
@@ -98,8 +98,20 @@ export default function AddRecipeForm() {
 
                 <input type="submit" value="Create New Recipe" onSubmit={e => addRecipe(e)} />
                 <h1>Add Ingredients:</h1>
-                <Searchbar setSingleIngredient={setSingleIngredient} singleIngredient={singleIngredient} />
+                <Searchbar setIngredients={setIngredients} ingredients={ingredients} addRecipeActive={addRecipeActive} />
             </form>
+            <div>
+                <h3>Ingredients:</h3>
+                <div>
+                    {ingredients.slice(1).map((item, key) =>
+                        <Link to={"/article/" + item.id} key={key}>
+                            <li>
+                                <h2>{item.productId}</h2>
+                            </li>
+                        </Link>
+                    )}
+                </div>
+            </div>
 
 
         </>

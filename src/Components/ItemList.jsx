@@ -8,20 +8,11 @@ import "./itemList.css"
 
 export default function ItemList(props) {
 
-    // const addIngredient = (e, itemID) => {
-    //     e.preventDefault()
 
-    //     const [singleIngredient, setSingleIngredient] = useState({})
-
-    //     setSingleIngredient({
-    //         "productId": itemID,
-    //         "amount": 1
-    //     })
-
-    //     console.log("singleIngred", singleIngredient);
-    // }
 
     console.log("ItemList", props.filterItems);
+
+    console.log("Itemlist props.ingredients", props.addRecipeActive);
 
 
     return (
@@ -44,8 +35,8 @@ export default function ItemList(props) {
                             ? <p>Stückzahl: {item.amount}</p>
                             : null}
 
-                        {(props.ingredients && props.setIngredients)
-                            ? <AddIngredient setIngredients={props.setIngredients} ingredients={props.ingredients} />
+                        {(props.addRecipeActive)
+                            ? <AddIngredient setIngredients={props.setIngredients} ingredients={props.ingredients} itemID={item.id || item.product.id} />
                             :
                             (item.amount > 1 ?
                                 <AddMultipleItemsToShoppingList id={item.id || item.product.id} amount={item.amount} />
@@ -60,6 +51,37 @@ export default function ItemList(props) {
     )
 }
 
-const AddIngredient = ({ }) => {
+const AddIngredient = ({ ingredients, setIngredients, itemID }) => {
 
+    const [singleIngredient, setSingleIngredient] = useState({})
+
+    const addSingleIngredient = (e, itemID) => {
+        e.preventDefault()
+        setSingleIngredient({
+            "productId": itemID,
+            "amount": 1
+        })
+    }
+
+    const addIngredient = (e) => {
+        e.preventDefault()
+        if (singleIngredient.length < 1) {
+            return
+        } else {
+            setIngredients([...ingredients, singleIngredient])
+        }
+    }
+
+    console.log("singleIngredient", singleIngredient);
+    console.log("allIngredients", ingredients);
+
+    return (
+        <>
+            <button onClick={(e) => {
+                addSingleIngredient(e, itemID)
+                addIngredient(e)
+            }}
+            >+</button>
+        </>
+    )
 }
