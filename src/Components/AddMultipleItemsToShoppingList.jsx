@@ -19,7 +19,7 @@ export default function AddMultipleItemsToShoppingList(props) {
 
     return (
         <>
-            <button onClick={e => addItem(e, props.id, props.amount)}>+</button>
+            <button onClick={e => addItem(e, props.id, props.amount)}>+ add mult</button>
         </>
     )
 

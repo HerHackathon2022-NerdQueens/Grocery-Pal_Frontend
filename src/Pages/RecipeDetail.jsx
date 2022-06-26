@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom"
 import AddOneItemToShoppingList from "../Components/AddOneItemToShoppingList";
 import ItemList from "../Components/ItemList";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import "./recipeDetail.css"
 
 export default function RecipeDetails() {
     const { recipeID } = useParams();
@@ -50,27 +52,27 @@ export default function RecipeDetails() {
     }
 
     return (
-        <>
+        <main>
+
             {loaded ?
                 (error ? <div>
                     <h3>Sorry, we could not find that recipe :/</h3>
                 </div> :
                     <>
                         <article>
-                            <h2>{singleRecipe.recipeName}</h2>
+                            <section className="header">
+                                <button className="btn back-btn" onClick={navigateBack}><AiOutlineArrowLeft /></button>
+                                <h2>{singleRecipe.recipeName}</h2>
+                            </section>
                             <div>
                                 <p>{singleRecipe.instructions}</p>
                             </div>
                             <ItemList filterItems={singleRecipe.ingredients} />
-
-                            <button onClick={e => addAllIngredients(e, singleRecipe.ingredients)}>Add all ingredients to ShoppingList</button>
+                            <button className="blue-btn" onClick={e => addAllIngredients(e, singleRecipe.ingredients)}>Add all ingredients to ShoppingList</button>
                         </article>
                     </>
                 )
                 : <h1>Loading...</h1>}
-
-            <button onClick={navigateBack}>Back</button>
-
-        </>
+        </main>
     )
 }
