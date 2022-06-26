@@ -19,7 +19,7 @@ export default function AddOneItemToShoppingList(props) {
         <>
             {props.saveTextClass ?
                 <button className="blue-btn" onClick={e => addItem(e, props.id)}>Save to my List </button>
-                : <button className="blue-btn" onClick={e => addItem(e, props.id)}>+</button>
+                : <button className="plus-btn btn" onClick={e => addItem(e, props.id)}>+</button>
             }
         </>
     )

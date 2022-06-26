@@ -5,7 +5,6 @@ import Header from "../Components/Header"
 export default function ProtectedPage() {
     return (
         <>
-            {/* <Header /> */}
 
             <Outlet />
 

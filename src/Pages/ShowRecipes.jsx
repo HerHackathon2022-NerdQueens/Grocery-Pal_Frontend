@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import "./showRecipes.css"
 
 export default function ShowRecipes() {
     const [allRecipes, setAllRecipes] = useState([])
@@ -25,13 +27,17 @@ export default function ShowRecipes() {
             })
     }, [])
 
-    const goBack = () => {
+    const navigateBack = () => {
         navigate(-1)
     }
 
     return (
-        <>
-            <h1>Recipes:</h1>
+        <main>
+            <section className="header">
+                <button className="btn back-btn" onClick={navigateBack}><AiOutlineArrowLeft /></button>
+                <h1>Recipes</h1>
+            </section>
+
             {loaded ?
                 (error ? <h2>There seems to be a problem :/</h2>
                     : (
@@ -39,10 +45,14 @@ export default function ShowRecipes() {
                             : <ul>
                                 {allRecipes.map((recipe, key) =>
                                     <Link to={"/repice/" + recipe.id} key={key}>
-                                        <li>
+                                        <li className="recipe-info">
                                             <div>
-                                                <h1>{recipe.recipeName}</h1>
-                                                <p>{recipe.instructions.substring(0, 100)}</p>
+                                                <img src="../img/bg.jpg" alt="measurements cups" />
+                                            </div>
+                                            <div className="flex">
+                                                <h3>{recipe.recipeName}</h3>
+                                                <p className="link-lg"><a href="#">Ingredients list</a></p>
+                                                {/* <p>{recipe.instructions.substring(0, 100)}</p> */}
                                             </div>
                                         </li>
                                     </Link>
@@ -52,7 +62,6 @@ export default function ShowRecipes() {
                 )
                 : <h2>Loading...</h2>
             }
-            <button onClick={goBack}>Go Back</button>
-        </>
+        </main>
     )
 }
