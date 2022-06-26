@@ -8,23 +8,15 @@ import "./itemList.css"
 
 export default function ItemList(props) {
 
-    // const addIngredient = (e, itemID) => {
-    //     e.preventDefault()
 
-    //     const [singleIngredient, setSingleIngredient] = useState({})
-
-    //     setSingleIngredient({
-    //         "productId": itemID,
-    //         "amount": 1
-    //     })
-
-    //     console.log("singleIngred", singleIngredient);
-    // }
 
     console.log("ItemList", props.filterItems);
 
+    console.log("Itemlist props.ingredients", props.addRecipeActive);
+
 
     return (
+
         <>
             <div className="flex mg">
                 <h2 className="title">Search Results</h2>
@@ -33,7 +25,7 @@ export default function ItemList(props) {
             <section className="product-container">
                 {props.filterItems.map((item, key) =>
                     <article key={key}>
-                        <Link to={"article/" + item.id || item.product.id}>
+                        <Link to={"/article/" + item.id || item.product.id}>
                             <div className="product-name">
                                 <h2>{item.productName || item.product.productName}</h2>
                             </div>
@@ -63,9 +55,41 @@ export default function ItemList(props) {
 
                 )}
             </section></>
+
     )
 }
 
-const AddIngredient = ({ }) => {
+const AddIngredient = ({ ingredients, setIngredients, itemID }) => {
 
+    const [singleIngredient, setSingleIngredient] = useState({})
+
+    const addSingleIngredient = (e, itemID) => {
+        e.preventDefault()
+        setSingleIngredient({
+            "productId": itemID,
+            "amount": 1
+        })
+    }
+
+    const addIngredient = (e) => {
+        e.preventDefault()
+        if (singleIngredient.length < 1) {
+            return
+        } else {
+            setIngredients([...ingredients, singleIngredient])
+        }
+    }
+
+    console.log("singleIngredient", singleIngredient);
+    console.log("allIngredients", ingredients);
+
+    return (
+        <>
+            <button onClick={(e) => {
+                addSingleIngredient(e, itemID)
+                addIngredient(e)
+            }}
+            >+</button>
+        </>
+    )
 }
