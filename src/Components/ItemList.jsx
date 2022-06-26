@@ -39,7 +39,7 @@ export default function ItemList(props) {
                                 ? <p>Stückzahl: {item.amount}</p>
                                 : null}
                             <div className="flex">
-                                <Link className="link" to={"article/" + item.id || item.product.id}>
+                                <Link className="link" to={item.id ? "/article/" + item.id : "/article/" + item.product.id}>
                                     Details
                                 </Link>
                                 {(props.ingredients && props.setIngredients)
