@@ -5,8 +5,6 @@ export default function AddOneItemToShoppingList(props) {
     const addItem = (event, itemID) => {
         event.preventDefault()
 
-        console.log(itemID);
-
         fetch("http://localhost:8081/ShoppingList/" + itemID, {
             method: "POST",
             headers: {

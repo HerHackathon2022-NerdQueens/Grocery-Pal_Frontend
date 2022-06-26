@@ -29,10 +29,6 @@ export default function ArticleDetail(props) {
             })
     }, [])
 
-    if (error) {
-        console.log(error);
-    }
-
     const navigateBack = () => {
         navigate(-1)
     }

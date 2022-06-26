@@ -10,13 +10,11 @@ export default function Searchbar(props) {
     const [error, setError] = useState()
 
     useEffect(() => {
-        console.log("Searchbar all Items were rendered");
 
         fetch('http://localhost:8081/Product')
             .then(resp => resp.json())
             .then(data => {
                 if (!data.err && data) {
-                    console.log(data);
                     setAllItems(data)
                 } else if (data.err) {
                     setError(data.err.message)

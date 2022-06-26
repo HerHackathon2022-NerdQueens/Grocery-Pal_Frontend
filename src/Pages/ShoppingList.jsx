@@ -25,7 +25,6 @@ export default function ShoppingList() {
 
     const decreaseAmountItem = (e, itemID) => {
         e.preventDefault()
-        console.log("item decreased,id: ", itemID);
 
         fetch('http://localhost:8081/ShoppingList/' + itemID, {
             method: "DELETE",
@@ -40,10 +39,6 @@ export default function ShoppingList() {
     const increaseAmountItem = (e, itemID) => {
         e.preventDefault()
 
-        console.log("item increased,id: ", itemID);
-
-        console.log("http://localhost:8081/ShoppingList/" + itemID);
-
         fetch("http://localhost:8081/ShoppingList/" + itemID, {
             method: "POST",
             headers: {
@@ -53,9 +48,6 @@ export default function ShoppingList() {
 
         amountChange ? setAmountChange(false) : setAmountChange(true)
     }
-
-    // console.log("shoppingList", shoppingList);
-    // console.log("amountchange", amountChange);
 
     const navigate = useNavigate()
 

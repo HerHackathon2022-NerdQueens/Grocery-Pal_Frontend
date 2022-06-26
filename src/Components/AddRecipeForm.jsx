@@ -75,7 +75,6 @@ export default function AddRecipeForm() {
 
     }
 
-    console.log("ingredientsArray", ingredients);
 
     return (
         <>

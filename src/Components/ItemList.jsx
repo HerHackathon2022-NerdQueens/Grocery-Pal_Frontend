@@ -9,12 +9,6 @@ import "./itemList.css"
 export default function ItemList(props) {
 
 
-
-    console.log("ItemList", props.filterItems);
-
-    console.log("Itemlist props.ingredients", props.addRecipeActive);
-
-
     return (
 
         <>
@@ -79,9 +73,6 @@ const AddIngredient = ({ ingredients, setIngredients, itemID }) => {
             setIngredients([...ingredients, singleIngredient])
         }
     }
-
-    console.log("singleIngredient", singleIngredient);
-    console.log("allIngredients", ingredients);
 
     return (
         <>
