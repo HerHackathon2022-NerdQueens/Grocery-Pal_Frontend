@@ -4,7 +4,7 @@ main {
 }
 
 .header {
-    margin: 2%;
+    margin-bottom: 5%;
 }
 
 .header h1 {
@@ -65,7 +65,11 @@ main {
 }
 
 .map {
-    border: 1px solid;
     width: 90%;
-    margin: 5% auto;
+    margin: 8% auto;
+}
+
+.map img {
+    width: 100%;
+    height: 100%;
 }

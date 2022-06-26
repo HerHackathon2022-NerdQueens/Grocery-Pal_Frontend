@@ -64,10 +64,10 @@ export default function ShoppingList() {
     }
 
     return (
-        <>
+        <main>
             <section className="header">
-                <button className="back-btn btn" onClick={navigateBack}><AiOutlineArrowLeft /></button>
-                <h1>Your ShoppingList:</h1></section>
+                <button className="btn back-btn" onClick={navigateBack}><AiOutlineArrowLeft /></button>
+                <h1>Your ShoppingList</h1></section>
 
             <div>
                 {loaded ? (
@@ -79,26 +79,29 @@ export default function ShoppingList() {
                             {shoppingList.shoppingListItems.map((item, key) =>
                                 <li key={key}>
                                     <div className="shopping-list-item" >
-                                        <div className="flex-container">
-                                            <p className="amount">{item.amount}</p>
+                                        <div className="flex">
                                             <h4>{item.product.productName}</h4>
+                                            <div className="flex-container amount">
+                                                <button className="btn" onClick={e => increaseAmountItem(e, item.product.id)}>
+                                                    +
+                                                </button>
+                                                <p>{item.amount}</p>
+                                                <button className="btn" onClick={e => decreaseAmountItem(e, item.product.id)}>
+                                                    -
+                                                </button>
+                                            </div>
                                         </div>
                                         <div>
                                             <p className="price">{item.product.price}€</p>
-                                            <p>{item.product.brand}</p>
-                                            <p>{item.product.pack}</p>
-                                            <p className="category">{item.product.categoryName}</p>
-                                        </div>
-                                        <div>
-                                            <button onClick={e => increaseAmountItem(e, item.product.id)}>
-                                                ▲
-                                            </button>
-                                            <button onClick={e => decreaseAmountItem(e, item.product.id)}>
-                                                ▼
-                                            </button>
+                                            <div className="flex">
+                                                <p>{item.product.brand}</p>
+                                                <p>{item.product.pack}</p>
+                                                <p className="category">{item.product.categoryName}</p></div>
                                         </div>
                                     </div>
                                 </li>
+
+
                             )}
                         </ul>
                 )
@@ -108,6 +111,11 @@ export default function ShoppingList() {
                 }
 
             </div>
-        </>
+            <div className="map">
+                <img src="../img/map.jpg"
+                    alt="Map where item is located" />
+            </div>
+
+        </main>
     )
 }

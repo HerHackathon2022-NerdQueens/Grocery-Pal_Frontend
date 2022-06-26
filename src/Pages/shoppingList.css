@@ -1,6 +1,26 @@
-.shopping-list-item {}
+.shopping-list-item {
+    margin-bottom: 3%;
+    border-bottom: 1px solid #c4c4c4;
+}
 
 .shopping-list-item h4 {
     font-size: .9rem;
     font-weight: 600;
+}
+
+.shopping-list-item p {
+    font-size: .8rem;
+    margin-bottom: 5%;
+}
+
+.amount {
+    padding: 5px 10px;
+    border-radius: 3px;
+    background-color: #F1F1F1;
+}
+
+.category {
+    font-weight: 600;
+    color: #062880;
+
 }

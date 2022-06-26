@@ -17,37 +17,45 @@ export default function ItemList(props) {
 
     return (
 
-        <section className="product-container">
+        <>
+            <div className="flex mg">
+                <h2 className="title">Search Results</h2>
+                <a href="#" className="link-sm"> See all →</a>
+            </div>
+            <section className="product-container">
+                {props.filterItems.map((item, key) =>
+                    <article key={key}>
+                        <Link to={"/article/" + item.id || item.product.id}>
+                            <div className="product-name">
+                                <h2>{item.productName || item.product.productName}</h2>
+                            </div>
+                        </Link>
+                        <p>{item.brand || item.product.brand}</p>
+                        <p>{item.pack || item.product.pack}</p>
+                        <div>
+                            <p className="price blue">{item.price || item.product.price}€</p>
 
-            {props.filterItems.map((item, key) =>
+                            {item.amount
+                                ? <p>Stückzahl: {item.amount}</p>
+                                : null}
+                            <div className="flex">
+                                <Link className="link" to={"article/" + item.id || item.product.id}>
+                                    Details
+                                </Link>
+                                {(props.ingredients && props.setIngredients)
+                                    ? <AddIngredient setIngredients={props.setIngredients} ingredients={props.ingredients} />
+                                    :
+                                    (item.amount > 1 ?
+                                        <AddMultipleItemsToShoppingList id={item.id || item.product.id} amount={item.amount} />
+                                        :
+                                        < AddOneItemToShoppingList id={item.id || item.product.id} />)
+                                }</div>
+                        </div>
+                    </article>
 
-                <article key={key}>
-                    <Link to={"article/" + item.id || item.product.id}>
-                        <h2>{item.productName || item.product.productName}</h2>
-                    </Link>
-                    <p>{item.brand || item.product.brand}</p>
-                    <p>{item.pack || item.product.pack}</p>
+                )}
+            </section></>
 
-                    <div className="flex">
-                        <p>{item.price || item.product.price}€</p>
-
-                        {item.amount
-                            ? <p>Stückzahl: {item.amount}</p>
-                            : null}
-
-                        {(props.addRecipeActive)
-                            ? <AddIngredient setIngredients={props.setIngredients} ingredients={props.ingredients} itemID={item.id || item.product.id} />
-                            :
-                            (item.amount > 1 ?
-                                <AddMultipleItemsToShoppingList id={item.id || item.product.id} amount={item.amount} />
-                                :
-                                < AddOneItemToShoppingList id={item.id || item.product.id} />)
-                        }
-                    </div>
-                </article>
-
-            )}
-        </section>
     )
 }
 
