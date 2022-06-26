@@ -25,7 +25,7 @@ export default function ItemList(props) {
             <section className="product-container">
                 {props.filterItems.map((item, key) =>
                     <article key={key}>
-                        <Link to={"/article/" + item.id || item.product.id}>
+                        <Link to={item.id ? "/article/" + item.id : "/article/" + item.product.id}>
                             <div className="product-name">
                                 <h2>{item.productName || item.product.productName}</h2>
                             </div>
