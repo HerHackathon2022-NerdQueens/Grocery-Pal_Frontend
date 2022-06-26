@@ -28,7 +28,7 @@ export default function ItemList(props) {
         <>
             <div className="flex mg">
                 <h2 className="title">Search Results</h2>
-                <a href="#" className="link-sm"> See all -></a>
+                <a href="#" className="link-sm"> See all →</a>
             </div>
             <section className="product-container">
                 {props.filterItems.map((item, key) =>
